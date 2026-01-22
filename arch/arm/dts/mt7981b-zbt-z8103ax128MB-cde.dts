@@ -159,7 +159,7 @@
             #address-cells = <1>;
             #size-cells = <1>;
 
-            /* boot loader partition */
+            /* preloader partition */
             partition@0 {
                 label = "bl2";
                 reg = <0x0 0x100000>;
