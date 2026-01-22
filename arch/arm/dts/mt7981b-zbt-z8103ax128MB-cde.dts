@@ -146,12 +146,7 @@
 	support_quad;
 	tick_dly = <2>;
 	sample_sel = <0>;
-  partition@0 {
-    compatible = "fixed-partitions";
-    partition@580000 {
-      lable = "ubi";
-      reg = <0x580000 0x0>; //ubi add start
-  }
+
 	spi_nand@0 {
 		compatible = "spi-nand";
 		reg = <0>;
@@ -159,6 +154,37 @@
 		spi-rx-bus-width = <4>;
 		spi-tx-bus-width = <4>;
 	};
+	 partitions {
+            compatible = "fixed-partitions";
+            #address-cells = <1>;
+            #size-cells = <1>;
+
+            /* boot loader partition */
+            partition@0 {
+                label = "bl2";
+                reg = <0x0 0x100000>;
+                read-only;
+            };
+
+            partition@100000 {
+                label = "u-boot-env";
+                reg = <0x100000 0x80000>;
+            };
+
+            partition@180000 {
+                label = "Factory";
+                reg = <0x180000 0x200000>; // wireless 
+                read-only;
+            };
+
+            partition@380000 {
+                label = "fip";
+                reg = <0x380000 0x200000>; //  ATF+Uboot 
+            };
+			
+			partition@580000 {
+                label = "ubi";
+                reg = <0x580000 0x0>;
 };
 
 &spi2 {
