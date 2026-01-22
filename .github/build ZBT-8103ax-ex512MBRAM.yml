@@ -61,7 +61,7 @@ jobs:
             $DRAM_USE_DDR3 $DRAM_USE_DDR4 \
             all fip
 
-          cp build/mt7981/release/fip.bin ../fip-mt7981-${{ matrix.ddr }}-${{ matrix.bga }}-${{ matrix.flash }}.fip
+          cp build/mt7981/release/fip.bin ../fip-mt7981-z8103ax-${{ matrix.ddr }}-${{ matrix.bga }}-${{ matrix.flash }}.fip
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
