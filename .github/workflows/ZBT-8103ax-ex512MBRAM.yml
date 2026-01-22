@@ -55,10 +55,12 @@ jobs:
         run: |
           git clone https://github.com/mtk-openwrt/arm-trusted-firmware --depth 1
           cd arm-trusted-firmware
+          export DRAM_USE_DDR3=${DRAM_USE_DDR3}
+          export DRAM_USE_DDR4=${DRAM_USE_DDR4}
+          export BOARD_BGA=${BOARD_BGA}
           make PLAT=mt7981 BOOT_DEVICE=spim-nand \
             BL33=../${BL33} \
-            BOARD_BGA=$BOARD_BGA \
-            $DRAM_USE_DDR3 $DRAM_USE_DDR4 \
+            BOARD_BGA=${BOARD_BGA} \
             all fip
 
           cp build/mt7981/release/fip.bin ../fip-mt7981-z8103ax-${{ matrix.ddr }}-${{ matrix.bga }}-${{ matrix.flash }}.fip
