@@ -68,5 +68,5 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: FIP-${{ matrix.ddr }}-${{ matrix.bga }}-${{ matrix.flash }}
-          path: fip-mt7981-${{ matrix.ddr }}-${{ matrix.bga }}-${{ matrix.flash }}.fip
+          name: FIP-mt7981-z8103ax-${{ matrix.ddr }}-${{ matrix.bga }}-${{ matrix.flash }}
+          path: fip-mt7981-z8103ax-${{ matrix.ddr }}-${{ matrix.bga }}-${{ matrix.flash }}.fip
