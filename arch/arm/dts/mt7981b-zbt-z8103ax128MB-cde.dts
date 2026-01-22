@@ -184,7 +184,7 @@
 			
 			partition@580000 {
                 label = "ubi";
-                reg = <0x580000 0x0>;
+                reg = <0x580000 0x7a80000>; // 512MB RAM
 };
 
 &spi2 {
