@@ -19,10 +19,12 @@ int dram_init(void)
 
 	ret = fdtdec_setup_mem_size_base();
 	if (ret)
-		return ret;
+		printf("fdt setup mem-base-size failed %d\n",ret);
 
 	gd->ram_size = get_ram_size((void *)gd->ram_base, SZ_1G);
-
+	if (gd->ram_size ==0)
+		gd->ram_size =256UL * SZ_1M; //fallback
+	printf("Detected Dram size:%lu Mib\n",gd->ram_size / SZ_1M);
 	return 0;
 }
 
